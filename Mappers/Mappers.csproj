@@ -52,10 +52,6 @@
     <Compile Include="SystemUnitMapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entity\Entity.csproj">
-      <Project>{509265bd-d1fb-4540-9ba6-2cea1014e3b9}</Project>
-      <Name>Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{00116c74-c5d0-4f9a-9cd5-9507663e047e}</Project>
       <Name>Models</Name>

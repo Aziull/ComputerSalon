@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UI;
-using UI.Abstract;
+
 
 namespace ComputerSalon
 {
@@ -12,8 +12,8 @@ namespace ComputerSalon
     {
         static void Main(string[] args)
         {
-            IView consoleView = new ConsoleView();
-            IController manageController = new ManageController(consoleView);
+            ConsoleView consoleView = new ConsoleView();
+            ManageController manageController = new ManageController(consoleView);
             manageController.View.Start();
         }
     }

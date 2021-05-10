@@ -1,5 +1,4 @@
 ﻿using Entity;
-using Entity.Abstract;
 using Models;
 using Models.Abstract;
 using System;
@@ -8,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Types;
-using UI.Abstract;
 
 namespace UI
 {
-    public class ConsoleView : IView
+    public class ConsoleView 
     {
-        public IController Controller { get; set; }
+        public ManageController Controller { get; set; }
         public List<string> MainOptions { get; set; }
         public List<string> ConstructorOptions { get; set; }
 

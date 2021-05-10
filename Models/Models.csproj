@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Abstract\BaseModel.cs" />
     <Compile Include="CaseModel.cs" />
+    <Compile Include="InMemoryDB.cs" />
     <Compile Include="MemoryCardModel.cs" />
     <Compile Include="MotherboardModel.cs" />
     <Compile Include="PowerSupplyModel.cs" />

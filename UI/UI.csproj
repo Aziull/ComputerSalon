@@ -41,21 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IController.cs" />
-    <Compile Include="Abstract\IView.cs" />
     <Compile Include="ConsoleView.cs" />
     <Compile Include="ManageController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entity\Entity.csproj">
-      <Project>{509265bd-d1fb-4540-9ba6-2cea1014e3b9}</Project>
-      <Name>Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mappers\Mappers.csproj">
-      <Project>{5fd8dbe3-7c28-4847-bacc-65627b53b0db}</Project>
-      <Name>Mappers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{00116c74-c5d0-4f9a-9cd5-9507663e047e}</Project>
       <Name>Models</Name>
@@ -64,9 +54,6 @@
       <Project>{157ef38d-1d01-44e5-9e29-ccd75bbe43ff}</Project>
       <Name>Types</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
