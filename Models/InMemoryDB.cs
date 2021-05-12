@@ -4,7 +4,7 @@ using Models.Abstract;
 using System.Collections.Generic;
 using Types;
 
-namespace Entity
+namespace Models
 {
     public  class InMemoryDB
     {
