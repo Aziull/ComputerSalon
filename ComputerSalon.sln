@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{EA8C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Types", "Types\Types.csproj", "{157EF38D-1D01-44E5-9E29-CCD75BBE43FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsUI", "WinFormsUI\WinFormsUI.csproj", "{69731403-2254-4720-94EE-CF5DF6C3106E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{157EF38D-1D01-44E5-9E29-CCD75BBE43FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{157EF38D-1D01-44E5-9E29-CCD75BBE43FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{157EF38D-1D01-44E5-9E29-CCD75BBE43FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69731403-2254-4720-94EE-CF5DF6C3106E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69731403-2254-4720-94EE-CF5DF6C3106E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69731403-2254-4720-94EE-CF5DF6C3106E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69731403-2254-4720-94EE-CF5DF6C3106E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
