@@ -1,41 +1,32 @@
-﻿using Entity;
-using Entity.Abstract;
-using Mappers.Abstaract;
+﻿using Mappers.Abstract;
 using Models;
-using Models.Abstract;
-using Types;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Mappers
 {
-     public class ProcessorMapper : IBaseMapper
+    public class ProcessorMapper : IModelMapper<Processor>
     {
-        public IBaseEntity ToEntity(BaseModel powerSupply)
+        public Processor ToModel(Entities.Detail detail)
         {
-            ProcessorModel processorModel = (ProcessorModel)powerSupply;
-            return new ProcessorEntity
+            Processor processor = new Processor()
             {
-                Id = processorModel.Id,
-                Name = processorModel.Name,
-                Wattage = processorModel.Wattage,
-                SocketType = processorModel.SocketType.ToString(),
-
-                DetailType = processorModel.DetailType
+                Id = detail.Id,
+                Name = detail.Name,
+                Price = detail.Price,
+                Type = (Types.DetailType)detail.TypeId
             };
-        }
+            processor.Wattage = Int32.Parse(detail.Values.
+               Where(value => value.Property.Name == "wattage").
+               Select(value => value.Data).
+               FirstOrDefault());
 
-        public BaseModel ToModel(IBaseEntity processor)
-        {
-            ProcessorEntity processorEntity = (ProcessorEntity)processor;
-            return new ProcessorModel
-            {
-                Id = processorEntity.Id,
-                Name = processorEntity.Name,
-                Wattage = processorEntity.Wattage,
-                SocketType = (SocketType) Enum.Parse(typeof(SocketType), processorEntity.SocketType),
+            processor.SocketType = detail.Values.Where(value => value.Property.Name == "SocketFactor").Select(value => value.Data).FirstOrDefault();
 
-                DetailType = processorEntity.DetailType
-            };
+
+            return processor;
         }
     }
 }

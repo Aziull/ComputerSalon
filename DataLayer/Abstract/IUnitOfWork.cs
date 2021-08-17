@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Abstract
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         IDetailRepository DetailRepository { get; set; }
         IValueRepository ValueRepository { get; set; }
@@ -14,6 +14,6 @@ namespace DataLayer.Abstract
         ISystemUnitRepository SystemUnitRepository { get; set; }
         ISystemUnitDetailRepository SystemUnitDetailRepository { get; set; }
 
-        Task SaveChanges();
+        Task SaveChangesAsync();
     }
 }

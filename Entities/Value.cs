@@ -15,7 +15,7 @@ namespace Entities
 
         [ForeignKey("Property")]
         [Column("property")]
-        public int AttributeId { get; set; }
+        public int PropertyId { get; set; }
 
         [Column("data")]
         public string Data { get; set; }

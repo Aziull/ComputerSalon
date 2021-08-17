@@ -1,40 +1,40 @@
-﻿using Entity;
-using Entity.Abstract;
-using Mappers.Abstaract;
+﻿using Mappers.Abstract;
 using Models;
-using Models.Abstract;
-using Types;
 using System;
+using System.Linq;
+using Types;
 
 namespace Mappers
 {
-    public class CaseMapper : IBaseMapper
-    {     
-        public IBaseEntity ToEntity(BaseModel Case)
+    public class CaseMapper : IModelMapper<Case>
+    {
+        public Case ToModel(Entities.Detail detail)
         {
-            CaseModel CaseModel = (CaseModel)Case;
-            return new CaseEntity
+            Case unitCase = new Case
             {
-                Id = Case.Id,
-                Name = Case.Name,
-                MotherboardTypeСompatibility = CaseModel.MotherboardTypeСompatibility.ToString(),
-                PowerSupplyTypeCompatybility = CaseModel.PowerSupplyTypeCompatybility.ToString(),
-
-                DetailType = CaseModel.DetailType
+                Id = detail.Id,
+                Name = detail.Name,
+                Price = detail.Price,
+                Type = (Types.DetailType)detail.TypeId
             };
-        }
-        public BaseModel ToModel(IBaseEntity Case)
-        {
-            CaseEntity CaseEntity = (CaseEntity)Case;
-            return new CaseModel
-            {
-                Id = Case.Id,
-                Name = Case.Name,
-                MotherboardTypeСompatibility = (MotherboardType) Enum.Parse(typeof(MotherboardType), CaseEntity.MotherboardTypeСompatibility),
-                PowerSupplyTypeCompatybility = (PowerSupplyType) Enum.Parse(typeof(PowerSupplyType), CaseEntity.PowerSupplyTypeCompatybility),
+            int width = Int32.Parse(detail.Values.
+                Where(value => value.Property.Name == "width").
+                Select(value => value.Data).
+                FirstOrDefault());
 
-                DetailType = CaseEntity.DetailType
-            };
+            int height = Int32.Parse(detail.Values.
+                Where(value => value.Property.Name == "height").
+                Select(value => value.Data).
+                FirstOrDefault());
+
+            int depth = Int32.Parse(detail.Values.
+                Where(value => value.Property.Name == "depth").
+                Select(value => value.Data).
+                FirstOrDefault());
+
+            unitCase.MotherboardTypeСompatibility = detail.Values.Where(value => value.Property.Name == "MotherboardFactor").Select(value => value.Data).FirstOrDefault();
+            unitCase.MaxPowerSupplySize = new Tuple<int, int, int>(width, height, depth);
+            return unitCase;
         }
     }
 }

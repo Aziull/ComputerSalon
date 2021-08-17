@@ -1,30 +1,28 @@
-﻿
-using Mappers.Abstaract;
-using System;
+﻿using Mappers.Abstract;
+using Models;
 using Types;
 
 namespace Mappers.Factories
 {
-    public class MapperFactory
+    public class MapperFactory : IMapperFactory
     {
-        public IBaseMapper SelectMapper(DetailType type)
+        public IModelMapper<T> SellectMapper<T>(DetailType type) where T : Detail
         {
             switch (type)
             {
                 case DetailType.Case:
-                    return new CaseMapper();
-                case DetailType.Motherboard:
-                    return new MotherboardMapper();
-                case DetailType.PowerSupply:
-                    return new PowerSupplyMapper();
+                    return (IModelMapper<T>)new CaseMapper();
                 case DetailType.MemoryCard:
-                    return new MemoryCardMapper();
+                    return (IModelMapper<T>)new MemmoryCardMapper();
+                case DetailType.Motherboard:
+                    return (IModelMapper<T>)new MotherboardMapper();
+                case DetailType.PowerSupply:
+                    return (IModelMapper<T>)new PowerSupplyMapper();
                 case DetailType.Processor:
-                    return new ProcessorMapper();
+                    return (IModelMapper<T>)new ProcessorMapper();
                 default:
-                    throw new InvalidOperationException();
+                    return null;
             }
-            
         }
     }
 }

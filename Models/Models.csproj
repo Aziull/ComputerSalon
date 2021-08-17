@@ -41,15 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\BaseModel.cs" />
-    <Compile Include="CaseModel.cs" />
+    <Compile Include="Abstract\IWattageConsumer.cs" />
+    <Compile Include="Detail.cs" />
+    <Compile Include="Case.cs" />
     <Compile Include="InMemoryDB.cs" />
-    <Compile Include="MemoryCardModel.cs" />
-    <Compile Include="MotherboardModel.cs" />
-    <Compile Include="PowerSupplyModel.cs" />
+    <Compile Include="MemoryCard.cs" />
+    <Compile Include="Motherboard.cs" />
+    <Compile Include="PowerSupply.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProcessorModel.cs" />
-    <Compile Include="SystemUnitModel.cs" />
+    <Compile Include="Processor.cs" />
+    <Compile Include="SystemUnit.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Types\Types.csproj">

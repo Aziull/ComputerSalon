@@ -1,6 +1,6 @@
 ﻿
 using Models;
-using Models.Abstract;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,18 +59,18 @@ namespace UI
         {
             PrintMenuItems(ConstructorOptions, "Comfig");
             DisplayDetailsByType(DetailType.Case);
-            CaseModel Case;
-            ProcessorModel Processor;
-            MotherboardModel Motherboard;
-            MemoryCardModel MemoryCard;
-            PowerSupplyModel PowerSupply;
+            Case Case;
+            Processor Processor;
+            Motherboard Motherboard;
+            MemoryCard MemoryCard;
+            PowerSupply PowerSupply;
             while (true)
             {
                 Console.WriteLine("Enter Case Id:");
                 int CaseId = Convert.ToInt32(Console.ReadLine());
-                if (Controller.GetById(CaseId).DetailType == DetailType.Case)
+                if (Controller.GetById(CaseId).Type == DetailType.Case)
                 {
-                    Case = (CaseModel)Controller.GetById(CaseId);
+                    Case = (Case)Controller.GetById(CaseId);
                     Console.WriteLine(Case);
                     break;
                 }
@@ -84,9 +84,9 @@ namespace UI
                 DisplayDetailsByType(DetailType.Processor);
                 Console.WriteLine("Enter Processor Id:");
                 int ProcessorId = Convert.ToInt32(Console.ReadLine());
-                if (Controller.GetById(ProcessorId).DetailType == DetailType.Processor)
+                if (Controller.GetById(ProcessorId).Type == DetailType.Processor)
                 {
-                    Processor = (ProcessorModel)Controller.GetById(ProcessorId);
+                    Processor = (Processor)Controller.GetById(ProcessorId);
                     Console.WriteLine(Processor);
                     break;
                 }
@@ -98,9 +98,9 @@ namespace UI
                 DisplayDetailsByType(DetailType.Motherboard);
                 Console.WriteLine("Enter Motherboard Id:");
                 int MotherboardId = Convert.ToInt32(Console.ReadLine());
-                if (Controller.GetById(MotherboardId).DetailType == DetailType.Motherboard)
+                if (Controller.GetById(MotherboardId).Type == DetailType.Motherboard)
                 {
-                    Motherboard = (MotherboardModel)Controller.GetById(MotherboardId);
+                    Motherboard = (Motherboard)Controller.GetById(MotherboardId);
                     Console.WriteLine(Motherboard);
                     break;
                 }
@@ -112,9 +112,9 @@ namespace UI
                 DisplayDetailsByType(DetailType.MemoryCard);
                 Console.WriteLine("Enter Memory Card Id:");
                 int MemoryCardId = Convert.ToInt32(Console.ReadLine());
-                if (Controller.GetById(MemoryCardId).DetailType == DetailType.MemoryCard)
+                if (Controller.GetById(MemoryCardId).Type == DetailType.MemoryCard)
                 {
-                    MemoryCard = (MemoryCardModel)Controller.GetById(MemoryCardId);
+                    MemoryCard = (MemoryCard)Controller.GetById(MemoryCardId);
                     Console.WriteLine(MemoryCard);
                     break;
                 }
@@ -127,9 +127,9 @@ namespace UI
                 DisplayDetailsByType(DetailType.PowerSupply);
                 Console.WriteLine("Enter Power Supply Id:");
                 int PowerSupplyId = Convert.ToInt32(Console.ReadLine());
-                if (Controller.GetById(PowerSupplyId).DetailType == DetailType.PowerSupply)
+                if (Controller.GetById(PowerSupplyId).Type == DetailType.PowerSupply)
                 {
-                    PowerSupply = (PowerSupplyModel)Controller.GetById(PowerSupplyId);
+                    PowerSupply = (PowerSupply)Controller.GetById(PowerSupplyId);
                     Console.WriteLine(PowerSupply);
                     break;
                 }
@@ -239,7 +239,7 @@ namespace UI
             }
             Console.WriteLine();
         }
-        public void DisplayDetails(List<BaseModel> detail)
+        public void DisplayDetails(List<Detail> detail)
         {
 
             Console.WriteLine("All:");

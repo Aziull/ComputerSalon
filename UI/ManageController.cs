@@ -1,7 +1,6 @@
 ﻿
 
 using Models;
-using Models.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 using Types;
@@ -22,33 +21,33 @@ namespace UI
             view.Controller = this;
         }
 
-        public BaseModel GetById(int id)
+        public Detail GetById(int id)
         {
             return GetAllDetail().Find(detail => detail.Id == id);
         }
-        public List<BaseModel> GetAllDetail()
+        public List<Detail> GetAllDetail()
         {
             return Data.DetailsData;
         }
-        public List<BaseModel> GetDetailByType(DetailType type)
+        public List<Detail> GetDetailByType(DetailType type)
         {
-            return GetAllDetail().FindAll(detail => detail.DetailType == type).ToList();
+            return GetAllDetail().FindAll(detail => detail.Type == type).ToList();
         }
 
-        public bool IsPossibleToCreate(CaseModel Case, ProcessorModel Processor, MotherboardModel Motherboard, MemoryCardModel MemoryCard, PowerSupplyModel PowerSupply)
+        public bool IsPossibleToCreate(Case Case, Processor Processor, Motherboard Motherboard, MemoryCard MemoryCard, PowerSupply PowerSupply)
         {
-            double SystemWatage = PowerSupply.CalculateSystemWattage(Processor.Wattage, MemoryCard.Wattage);
-            bool IsCompatiblePowerSupply = PowerSupply.Wattage > SystemWatage;
+            /*double SystemWatage = PowerSupply.CalculateSystemWattage(Processor.Wattage, MemoryCard.Wattage);
+            bool IsCompatiblePowerSupply = PowerSupply.Power > SystemWatage;
 
             bool IsCompatibleWithMB = Motherboard.CheckMemoryCardCompatibility(MemoryCard.MemoryCardType)
                                       && Motherboard.CheckProcessorCompatibility(Processor.SocketType);
 
             bool IsCompatibleWithCase = Case.CheckMotherBoardСompatibility(Motherboard.MotherboardType) 
-                                        && Case.CheckPowerSupplyСompatibility(PowerSupply.PowerSupplyType);
+                                        && Case.CheckPowerSupplyСompatibility(PowerSupply.PowerSupplyType);*/
 
 
 
-            return IsCompatibleWithMB && IsCompatibleWithCase && IsCompatiblePowerSupply;
+            return false;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Models.Abstract;
-using Types;
+﻿using Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class MotherboardModel : BaseModel
+    public class Motherboard : Detail
     {
-        public MotherboardType MotherboardType { get; set; }
-        public SocketType SocketTypeCompatibility { get; set; }
-        public MemoryCardType MemoryCardTypeCompatibility { get; set; }
+        public string MotherboardType { get; set; }
+        public string SocketTypeCompatibility { get; set; }
+        public string MemoryCardTypeCompatibility { get; set; }
 
-        public bool CheckMemoryCardCompatibility(MemoryCardType type)
+        public bool CheckMemoryCardCompatibility(MemoryCard memoryCard)
         {
-           return MemoryCardTypeCompatibility == type; 
+           return MemoryCardTypeCompatibility == memoryCard.MemoryCardType; 
         }
-        public bool CheckProcessorCompatibility(SocketType type)
+        public bool CheckProcessorCompatibility(Processor processor)
         {
-           return SocketTypeCompatibility == type; 
+           return SocketTypeCompatibility == processor.SocketType; 
         }
 
         public override string ToString()

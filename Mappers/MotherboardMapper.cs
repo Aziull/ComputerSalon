@@ -1,44 +1,29 @@
-﻿using Entity;
-using Entity.Abstract;
-using Mappers.Abstaract;
+﻿using Mappers.Abstract;
 using Models;
-using Models.Abstract;
-using Types;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Mappers
 {
-    public class MotherboardMapper : IBaseMapper
+    public class MotherboardMapper : IModelMapper<Motherboard>
     {
-        public IBaseEntity ToEntity(BaseModel motherboard)
+        public Motherboard ToModel(Entities.Detail detail)
         {
-            MotherboardModel motherboardModel = (MotherboardModel)motherboard;
-            return new MotherboardEntity
+            Motherboard motherboard = new Motherboard()
             {
-                Id = motherboardModel.Id,
-                Name = motherboardModel.Name,
-                MotherboardType = motherboardModel.MotherboardType.ToString(),
-                MemoryCardTypeCompatibility = motherboardModel.MemoryCardTypeCompatibility.ToString(),
-                SocketTypeCompatibility = motherboardModel.SocketTypeCompatibility.ToString(),
-
-                DetailType = motherboardModel.DetailType
+                Id = detail.Id,
+                Name = detail.Name,
+                Price = detail.Price,
+                Type = (Types.DetailType)detail.TypeId
             };
-        }
 
-        public BaseModel ToModel(IBaseEntity motherboard)
-        {
-            MotherboardEntity motherboardEntity = (MotherboardEntity)motherboard;
-            return new MotherboardModel
-            {
-                Id = motherboardEntity.Id,
-                Price = motherboardEntity.Price,
-                Name = motherboardEntity.Name,
-                MotherboardType = (MotherboardType)Enum.Parse(typeof(MotherboardType), motherboardEntity.MotherboardType),
-                MemoryCardTypeCompatibility = (MemoryCardType)Enum.Parse(typeof(MemoryCardType), motherboardEntity.MemoryCardTypeCompatibility),
-                SocketTypeCompatibility = (SocketType)Enum.Parse(typeof(SocketType), motherboardEntity.SocketTypeCompatibility),
+            motherboard.MotherboardType = detail.Values.Where(value => value.Property.Name == "MotherboardFactor").Select(value => value.Data).FirstOrDefault();
+            motherboard.SocketTypeCompatibility = detail.Values.Where(value => value.Property.Name == "SocketFactor").Select(value => value.Data).FirstOrDefault();
+            motherboard.MemoryCardTypeCompatibility = detail.Values.Where(value => value.Property.Name == "MemoryCardFactor").Select(value => value.Data).FirstOrDefault();
 
-                DetailType = motherboardEntity.DetailType
-            };
+            return motherboard;
         }
     }
 }
