@@ -19,9 +19,7 @@ namespace MVVM.ViewModels.Locator
             obj.SetValue(AutoHookedUpViewModelProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for AutoHookedUpViewModel. 
-
-        //This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty AutoHookedUpViewModelProperty =
            DependencyProperty.RegisterAttached("AutoHookedUpViewModel",
            typeof(bool), typeof(ViewModelLocator), new
