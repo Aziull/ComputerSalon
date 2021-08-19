@@ -6,9 +6,12 @@
       xmlns:local="clr-namespace:MVVM.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ConfigPage">
+      Title="ConfigPage"
+      >
 
     <Grid>
-        
+        <GroupBox x:Name="groupBox" Header="GroupBox"/>
+
+
     </Grid>
 </Page>

@@ -18,6 +18,7 @@ namespace MVVM.Models
         public UnitMvvmDetails(IComputerService computerService)
         {
             this.computerService = computerService;
+            Details = new Dictionary<DetailType, ObservableCollection<Detail>>();
             Details[DetailType.Case] = new ObservableCollection<Detail>();
             Details[DetailType.MemoryCard] = new ObservableCollection<Detail>();
             Details[DetailType.Motherboard] = new ObservableCollection<Detail>();

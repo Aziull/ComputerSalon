@@ -9,9 +9,9 @@ namespace MVVM.ViewModels.Registrator
     public static class ViewModelRegistrator
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) => services
-            .AddSingleton<MainViewModel>()
-            .AddTransient<ConfigViewModel>()
-            .AddTransient<ExistingUnitsViewModel>()
+            .AddSingleton<MainWindowViewModel>()
+            .AddSingleton<ConfigViewModel>()
+            .AddSingleton<ExistingUnitsViewModel>()
             ;
     }
 }

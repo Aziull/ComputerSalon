@@ -4,17 +4,16 @@ using System.Windows.Input;
 using Models;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using MVVM.ViewModels.Base;
+using MVVM.Models;
 
 namespace MVVM.ViewModels
 {
-    public class ExistingUnitsViewModel : ViewModel
+    public class ExistingUnitsViewModel : ViewModelBase
     {
-        private ISystemUnitService systemUnitService;
-
         private SystemUnit selectedPC;
-        private ObservableCollection<SystemUnit> systemUnits;
 
-
+        public AllMvvmUnits systemUnits;
 
         public SystemUnit SelectedPC
         {
@@ -26,27 +25,13 @@ namespace MVVM.ViewModels
             }
         }
 
-        public ObservableCollection<SystemUnit> SystemUnits
+        public ExistingUnitsViewModel() : base("Existing PCs")
         {
-            get => systemUnits;
-            set
-            {
-                systemUnits = value;
-                OnPropertyChanged(nameof(SystemUnits));
-            }
-        }
-
-        public ExistingUnitsViewModel(ISystemUnitService systemUnitService)
-        {
-            this.systemUnitService = systemUnitService;
+            
             SelectedPC = new SystemUnit();
-            GetSystemUnits();
+           
         }
 
-        private async void GetSystemUnits()
-        {
-            IList<SystemUnit> allSystemUnits = await systemUnitService.GetSystemUnitsAsync();
-            SystemUnits = new ObservableCollection<SystemUnit>(allSystemUnits);
-        }
+        
     }
 }

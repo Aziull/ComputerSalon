@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MVVM
+namespace MVVM.Pages
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

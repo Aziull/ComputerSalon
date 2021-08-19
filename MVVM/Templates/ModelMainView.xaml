@@ -3,16 +3,13 @@
                      xmlns:system="clr-namespace:System;assembly=System.Runtime"
                     xmlns:vm="clr-namespace:MVVM.ViewModels"
                     xmlns:view="clr-namespace:MVVM.Pages">
-    <DataTemplate DataType="{x:Type system:Int32}">
-        <TextBlock Text="{Binding StringFormat=int:{0}}" />
-    </DataTemplate>
-
+    
     <DataTemplate DataType="{x:Type vm:ConfigViewModel}">
-        <view:ConfigPage DataContext="{Binding}" />
+        <view:ConfigPage/>
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:ExistingUnitsViewModel}">
-        <view:ExistingUnitsPage DataContext="{Binding}" />
+        <view:ExistingUnitsPage  />
     </DataTemplate>
     
 </ResourceDictionary>

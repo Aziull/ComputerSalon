@@ -6,9 +6,10 @@
       xmlns:local="clr-namespace:MVVM.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ExistingUnitsPage">
+      Title="ExistingUnitsPage"
+    >
 
     <Grid>
-        
+        <Label Content="fsdfw" Background="Bisque" HorizontalAlignment="Center"/>
     </Grid>
 </Page>
