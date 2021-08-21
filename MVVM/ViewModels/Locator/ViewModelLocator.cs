@@ -21,6 +21,14 @@ namespace MVVM.ViewModels.Locator
             obj.SetValue(AutoHookedUpViewModelProperty, value);
         }
 
+<<<<<<< HEAD
+=======
+        
+        public static readonly DependencyProperty AutoHookedUpViewModelProperty =
+           DependencyProperty.RegisterAttached("AutoHookedUpViewModel",
+           typeof(bool), typeof(ViewModelLocator), new
+           PropertyMetadata(false, AutoHookedUpViewModelChanged));
+>>>>>>> 10d40b4b136dc3c17be91d02f86eb229fc7e2f74
 
         private static void AutoHookedUpViewModelChanged(DependencyObject d,
            DependencyPropertyChangedEventArgs e)
