@@ -15,7 +15,7 @@ namespace Mappers
                 Id = detail.Id,
                 Name = detail.Name,
                 Price = detail.Price,
-                Type = (Types.DetailType)detail.TypeId
+                Type = (DetailType)detail.TypeId
             };
             int width = Int32.Parse(detail.Values.
                 Where(value => value.Property.Name == "width").

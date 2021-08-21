@@ -9,11 +9,11 @@ namespace BusinessLayer.Abstract
 {
     public interface IComputerService
     {
-        Task<IList<Case>> GetCasesAsync();
-        Task<IList<Processor>> GetProcessorsAsync();
-        Task<IList<PowerSupply>> GetPowerSuppliesAsync();
-        Task<IList<MemoryCard>> GetMemoryCardsAsync();
-        Task<IList<Motherboard>> GetMotherboardsAsync();
+        IList<Case> GetCases();
+        IList<Processor> GetProcessors();
+        IList<PowerSupply> GetPowerSupplies();
+        IList<MemoryCard> GetMemoryCards();
+        IList<Motherboard> GetMotherboards();
         
     }
 }

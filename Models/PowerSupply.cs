@@ -23,10 +23,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"Id: {Id} | " +
-                                  $"Name: {Name} | " +
-                                  $"Price: {Price} " +
-                                  $"| Wattage: {Power} | " ;
+            return String.Format("Name: {0} | Price: {1} | Power: {2} | Size: {3}", Name, Price, Power, Size);
         }
     }
 }

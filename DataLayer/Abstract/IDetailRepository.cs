@@ -6,6 +6,6 @@ namespace DataLayer.Abstract
 {
     public interface IDetailRepository : IGenericRepository<int,Detail>
     {
-        Task<IList<Detail>> GetDetailsByType(int type);
+        IList<Detail> GetDetailsByType(int type);
     }
 }

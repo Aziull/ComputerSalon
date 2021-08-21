@@ -6,6 +6,8 @@ namespace BusinessLayer.Abstract
 {
     public interface IValidator
     {
-        bool Validate(ISystemUnitHandler systemUnitHandler);
+        //Next
+        IValidator Next { get; set; }
+        bool Validate(ISingleUnitService systemUnitHandler);
     }
 }

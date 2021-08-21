@@ -3,6 +3,7 @@
 using DataLayer.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DataLayer
@@ -17,33 +18,33 @@ namespace DataLayer
             this.context = context;
             table = context.Set<T>();
         }
-        public async Task AddAsync(T entity)
+        public void Add(T entity)
         {
-            await table.AddAsync(entity);
-            await context.SaveChangesAsync();
+             table.Add(entity);
+             context.SaveChanges();
         }
 
-        public async Task DeleteAsync(K key)
+        public void Delete(K key)
         {
-            T obj = await table.FindAsync(key);
+            T obj = table.Find(key);
             table.Remove(obj);
-            await context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
-        public async Task<IList<T>> GetAllAsync()
+        public IList<T> GetAll()
         {
-            return await table.ToListAsync();
+            return table.ToList();
         }
 
-        public async Task<T> GetAsync(K key)
+        public T Get(K key)
         {
-            return await table.FindAsync(key);
+            return table.Find(key);
         }
 
-        public async Task UpdataAsync(T entity)
+        public void Updata(T entity)
         {
-            this.context.Entry(entity).State = EntityState.Modified;
-            await this.context.SaveChangesAsync();
+           context.Entry(entity).State = EntityState.Modified;
+           context.SaveChanges();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DataLayer
@@ -12,12 +13,12 @@ namespace DataLayer
         {
 
         }
-        public async Task<IList<SystemUnit>> GetAllFullSystemUnit()
+        public IList<SystemUnit> GetAllFullSystemUnit()
         {
-            return await context.SystemUnits
+            return  context.SystemUnits
                 .Include(systemUnit => systemUnit.SystemUnitDetails)
                 .ThenInclude(systemUnitDetail => systemUnitDetail.Detail)
-                .ToArrayAsync();
+                .ToList();
         }
     }
 }

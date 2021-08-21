@@ -6,11 +6,14 @@ namespace Mappers.Factories
 {
     public class MapperFactory : IMapperFactory
     {
-        public IModelMapper<T> SellectMapper<T>(DetailType type) where T : Detail
+
+        public IModelMapper<T> SelectMapper<T>(DetailType type) where T : class
         {
+
             switch (type)
             {
                 case DetailType.Case:
+                    var t = new CaseMapper();
                     return (IModelMapper<T>)new CaseMapper();
                 case DetailType.MemoryCard:
                     return (IModelMapper<T>)new MemmoryCardMapper();

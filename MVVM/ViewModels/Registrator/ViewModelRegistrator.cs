@@ -10,8 +10,8 @@ namespace MVVM.ViewModels.Registrator
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) => services
             .AddSingleton<MainWindowViewModel>()
-            .AddSingleton<ConfigViewModel>()
-            .AddSingleton<ExistingUnitsViewModel>()
+            .AddSingleton<ConfigPageViewModel>()
+            .AddSingleton<ExistingUnitsPageViewModel>()
             ;
     }
 }

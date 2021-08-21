@@ -1,14 +1,16 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Text;
 using System.Windows;
 
 namespace MVVM.ViewModels.Locator
 {
      public static class ViewModelLocator
     {
+        public static readonly DependencyProperty AutoHookedUpViewModelProperty =
+          DependencyProperty.RegisterAttached("AutoHookedUpViewModel",
+          typeof(bool), typeof(ViewModelLocator), new
+          PropertyMetadata(false, AutoHookedUpViewModelChanged));
+
         public static bool GetAutoHookedUpViewModel(DependencyObject obj)
         {
             return (bool)obj.GetValue(AutoHookedUpViewModelProperty);
@@ -19,13 +21,6 @@ namespace MVVM.ViewModels.Locator
             obj.SetValue(AutoHookedUpViewModelProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for AutoHookedUpViewModel. 
-
-        //This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty AutoHookedUpViewModelProperty =
-           DependencyProperty.RegisterAttached("AutoHookedUpViewModel",
-           typeof(bool), typeof(ViewModelLocator), new
-           PropertyMetadata(false, AutoHookedUpViewModelChanged));
 
         private static void AutoHookedUpViewModelChanged(DependencyObject d,
            DependencyPropertyChangedEventArgs e)

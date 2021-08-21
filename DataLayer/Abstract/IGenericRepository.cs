@@ -7,11 +7,11 @@ namespace DataLayer.Abstract
 {
      public interface IGenericRepository<K,T>
     {
-        Task AddAsync(T entity);
-        Task<T> GetAsync(K key);
-        Task<IList<T>> GetAllAsync();
-        Task UpdataAsync(T entity);
-        Task DeleteAsync(K key);
+        void Add(T entity);
+        T Get(K key);
+        IList<T> GetAll();
+        void Updata(T entity);
+        void Delete(K key);
 
     }
 }

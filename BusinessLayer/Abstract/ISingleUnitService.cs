@@ -7,7 +7,7 @@ using Types;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ISystemUnitHandler
+    public interface ISingleUnitService
     {
         void AddDetail(Detail detail);
         bool IsWorking();

@@ -4,11 +4,11 @@
                     xmlns:vm="clr-namespace:MVVM.ViewModels"
                     xmlns:view="clr-namespace:MVVM.Pages">
     
-    <DataTemplate DataType="{x:Type vm:ConfigViewModel}">
+    <DataTemplate DataType="{x:Type vm:ConfigPageViewModel}">
         <view:ConfigPage/>
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:ExistingUnitsViewModel}">
+    <DataTemplate DataType="{x:Type vm:ExistingUnitsPageViewModel}">
         <view:ExistingUnitsPage  />
     </DataTemplate>
     

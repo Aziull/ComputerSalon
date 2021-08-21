@@ -26,9 +26,9 @@ namespace DataLayer
             SystemUnitRepository = new SystemUnitRepository(context);
             SystemUnitDetailRepository = new SystemUnitDetailRepository(context);
         }
-        public async Task SaveChangesAsync()
+        public void SaveChanges()
         {
-            await context.SaveChangesAsync();
+             context.SaveChanges();
         }
     }
 }

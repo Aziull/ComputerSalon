@@ -27,13 +27,13 @@ namespace MVVM.Models
             FillData();
         }
 
-        private async void FillData()
+        private void FillData()
         {
-            AddItems(DetailType.Case, await computerService.GetCasesAsync());
-            AddItems(DetailType.MemoryCard, await computerService.GetMemoryCardsAsync());
-            AddItems(DetailType.Motherboard, await computerService.GetMotherboardsAsync());
-            AddItems(DetailType.PowerSupply, await computerService.GetPowerSuppliesAsync());
-            AddItems(DetailType.Processor, await computerService.GetProcessorsAsync());
+            AddItems(DetailType.Case, computerService.GetCases());
+            AddItems(DetailType.MemoryCard, computerService.GetMemoryCards());
+            AddItems(DetailType.Motherboard, computerService.GetMotherboards());
+            AddItems(DetailType.PowerSupply, computerService.GetPowerSupplies());
+            AddItems(DetailType.Processor, computerService.GetProcessors());
 
         }
 

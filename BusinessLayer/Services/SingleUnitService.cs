@@ -9,13 +9,20 @@ using Types;
 
 namespace BusinessLayer.Handlers
 {
-    public class SystemUnitHandler : ISystemUnitHandler
+    public class SingleUnitService : ISingleUnitService
     {
+        private PowerValidator powerValidator;
+        private SizeValidator sizeValidator;
+        private FormFactorValidator formFactorValidator;
+
         private IDictionary<DetailType, IList<Detail>> details;
         public double Price { get; set; }
 
-        public SystemUnitHandler()
+        public SingleUnitService(PowerValidator powerValidator, SizeValidator sizeValidator, FormFactorValidator formFactorValidator)
         {
+            this.powerValidator = powerValidator;
+            this.sizeValidator = sizeValidator;
+            this.formFactorValidator = formFactorValidator;
             details = new Dictionary<DetailType, IList<Detail>>();
 
             Init();
@@ -42,11 +49,10 @@ namespace BusinessLayer.Handlers
 
         public bool IsWorking()
         {
-            var powerValidator = new PowerValidator();
-            var sizeValidator = new SizeValidator();
-            var formFactorValidator = new FormFactorValidator();
+            formFactorValidator.Next = sizeValidator;
+            sizeValidator.Next = powerValidator;//DI 
 
-            return powerValidator.Validate(this) && sizeValidator.Validate(this) && formFactorValidator.Validate(this);
+            return formFactorValidator.Validate(this);
         }
 
         public IList<Detail> GetDetailByType(DetailType type)

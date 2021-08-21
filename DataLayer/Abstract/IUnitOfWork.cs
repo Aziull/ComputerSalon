@@ -14,6 +14,6 @@ namespace DataLayer.Abstract
         ISystemUnitRepository SystemUnitRepository { get; set; }
         ISystemUnitDetailRepository SystemUnitDetailRepository { get; set; }
 
-        Task SaveChangesAsync();
+        void SaveChanges();
     }
 }

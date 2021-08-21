@@ -2,6 +2,7 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Handlers;
 using BusinessLayer.Services;
+using BusinessLayer.Validators;
 using DataLayer;
 using DataLayer.Abstract;
 using Microsoft.Extensions.Configuration;
@@ -17,8 +18,11 @@ namespace MVVM.Services
             .AddSingleton<UnitMvvmDetails>()
             .AddSingleton<AllMvvmUnits>()
 
-            .AddTransient<ISystemUnitHandler, SystemUnitHandler>()
-            
+            .AddTransient< SizeValidator>()
+            .AddTransient< PowerValidator>()
+            .AddTransient<FormFactorValidator>()
+
+            .AddTransient<ISingleUnitService, SingleUnitService>()
             .AddTransient<IComputerService, ComputerService>()
             .AddTransient<ISystemUnitService, SystemUnitService>()
             ;

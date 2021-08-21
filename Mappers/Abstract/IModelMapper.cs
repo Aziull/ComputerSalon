@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mappers.Abstract
 {
-    public interface IModelMapper<T> where T : Models.Detail
+    public interface IModelMapper<T> where T : class
     {
        T ToModel(Detail detail);
     }

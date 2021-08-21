@@ -11,7 +11,7 @@ namespace MVVM.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        //private ICommand changePageCommand;
+        private RelayCommand changePageCommand;
         private ViewModelBase currentViewModel;
         private List<ViewModelBase> pageViewModels;
 
@@ -36,7 +36,7 @@ namespace MVVM.ViewModels
 
         }
 
-        private RelayCommand changePageCommand;
+        
         public RelayCommand ChangePageCommand
         {
             get
@@ -55,8 +55,8 @@ namespace MVVM.ViewModels
 
         public MainWindowViewModel() : base("MainWindow")
         {
-            PageViewModels.Add(App.Services.GetService<ConfigViewModel>());
-            PageViewModels.Add(App.Services.GetService<ExistingUnitsViewModel>());
+            PageViewModels.Add(App.Services.GetService<ConfigPageViewModel>());
+            PageViewModels.Add(App.Services.GetService<ExistingUnitsPageViewModel>());
 
            CurrentViewModel = PageViewModels[0];
         }

@@ -21,37 +21,35 @@ namespace BusinessLayer.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<IList<Case>> GetCasesAsync()
+        public  IList<Case> GetCases()
         {
-            return await GetDetailByTypeAsync(DetailType.Case, new CaseMapper());
+            return  GetDetailByType(DetailType.Case, new CaseMapper());
         }
 
-       
-
-        public async Task<IList<MemoryCard>> GetMemoryCardsAsync()
+        public  IList<MemoryCard> GetMemoryCards()
         {
-            return await GetDetailByTypeAsync(DetailType.MemoryCard, new MemmoryCardMapper());
+            return  GetDetailByType(DetailType.MemoryCard, new MemmoryCardMapper());
         }
 
-        public async Task<IList<Motherboard>> GetMotherboardsAsync()
+        public  IList<Motherboard> GetMotherboards()
         {
-            return await GetDetailByTypeAsync(DetailType.Motherboard, new MotherboardMapper());
+            return  GetDetailByType(DetailType.Motherboard, new MotherboardMapper());
         }
 
-        public async Task<IList<PowerSupply>> GetPowerSuppliesAsync()
+        public  IList<PowerSupply> GetPowerSupplies()
         {
-            return await GetDetailByTypeAsync(DetailType.PowerSupply, new PowerSupplyMapper());
+            return  GetDetailByType(DetailType.PowerSupply, new PowerSupplyMapper());
 
         }
 
-        public async Task<IList<Processor>> GetProcessorsAsync()
+        public  IList<Processor> GetProcessors()
         {
-            return await GetDetailByTypeAsync(DetailType.Processor, new ProcessorMapper());
+            return  GetDetailByType(DetailType.Processor, new ProcessorMapper());
 
         }
-        public async Task<IList<T>> GetDetailByTypeAsync<T>(DetailType detailType, IModelMapper<T> mapper) where T: Detail
+        private  IList<T> GetDetailByType<T>(DetailType detailType, IModelMapper<T> mapper) where T: Detail
         {
-            return (await unitOfWork.DetailRepository.GetDetailsByType((int)detailType)).Select(mapper.ToModel).ToList();
+            return unitOfWork.DetailRepository.GetDetailsByType((int)detailType).Select(mapper.ToModel).ToList();
         }
     }
 }

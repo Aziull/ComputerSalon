@@ -32,30 +32,30 @@ namespace Models
 
         private InMemoryDB() 
         {
-
+            var size = new System.Tuple<int, int, int>(10, 20, 30);
             DetailsData = new List<Detail>
             {
-               /* new Case{Id = DetailId, Name = "Zalman Z1", MotherboardTypeСompatibility=MotherboardType.ATX,PowerSupplyTypeCompatybility=PowerSupplyType.ATX , DetailType=DetailType.Case},
-                new Case{Id = DetailId, Name="Cooler Master", MotherboardTypeСompatibility=MotherboardType.MiniATX,PowerSupplyTypeCompatybility=PowerSupplyType.SFX, DetailType=DetailType.Case},
-                new Case{Id = DetailId, Name="AeroCool Aero-500", MotherboardTypeСompatibility=MotherboardType.MicroATX,PowerSupplyTypeCompatybility=PowerSupplyType.TFX,  DetailType=DetailType.Case},
-                new Case{Id = DetailId, Name="Thermaltake Core V21", MotherboardTypeСompatibility=MotherboardType.ATX,PowerSupplyTypeCompatybility=PowerSupplyType.TFX, DetailType=DetailType.Case},
-                new Processor{Id = DetailId, Name="AMD Athlon II X2", SocketType=SocketType.AM3, Wattage=65 ,DetailType =DetailType.Processor},
-                new Processor{Id = DetailId, Name="AMD Athlon II X3", SocketType=SocketType.AM3, Wattage=95,DetailType =DetailType.Processor},
-                new Processor{Id = DetailId, Name="AMD Ryzen 7 3800X", SocketType=SocketType.AM4, Wattage=105,DetailType =DetailType.Processor},
-                new Processor{Id = DetailId, Name="Intel Core i7-4770K", SocketType=SocketType.LGA1150, Wattage=84,DetailType =DetailType.Processor},
-                new Motherboard{Id = DetailId, Name = "ASRock X570", MemoryCardTypeCompatibility = MemoryCardType.DDR4, MotherboardType=MotherboardType.ATX, SocketTypeCompatibility = SocketType.AM4 , DetailType=DetailType.Motherboard},
-                new Motherboard{Id = DetailId, Name = "Biostar MCP6P", MemoryCardTypeCompatibility = MemoryCardType.DDR2, MotherboardType=MotherboardType.MicroATX, SocketTypeCompatibility=SocketType.AM3, DetailType=DetailType.Motherboard},
-                new Motherboard{Id = DetailId, Name = "MSI H81M-P33", MemoryCardTypeCompatibility = MemoryCardType.DDR3, MotherboardType=MotherboardType.MiniATX, SocketTypeCompatibility=SocketType.LGA1150, DetailType=DetailType.Motherboard},
-                new Motherboard{Id = DetailId, Name = "Asus M4N68T", MemoryCardTypeCompatibility = MemoryCardType.DDR3, MotherboardType=MotherboardType.ATX, SocketTypeCompatibility=SocketType.AM3, DetailType=DetailType.Motherboard},
-                new MemoryCard{Id = DetailId, Name = "AMD DDR2-800", MemoryCardType=MemoryCardType.DDR2,Wattage=1 ,DetailType=DetailType.MemoryCard},
-                new MemoryCard{Id = DetailId, Name = "Kingston DDR3-1333", MemoryCardType=MemoryCardType.DDR3,Wattage=2,DetailType=DetailType.MemoryCard},
-                new MemoryCard{Id = DetailId, Name = "Goodram DDR3-1333", MemoryCardType=MemoryCardType.DDR3,Wattage=1,DetailType=DetailType.MemoryCard},
-                new MemoryCard{Id = DetailId, Name = "HyperX DDR4-3200", MemoryCardType=MemoryCardType.DDR4,Wattage=2,DetailType=DetailType.MemoryCard},
-                new PowerSupply{Id = DetailId, Name="Modecom 400W", PowerSupplyType = PowerSupplyType.TFX, Wattage = 400 , DetailType=DetailType.PowerSupply},
-                new PowerSupply{Id = DetailId, Name="CHIEFTEC 650W", PowerSupplyType = PowerSupplyType.SFX, Wattage = 650 , DetailType=DetailType.PowerSupply},
-                new PowerSupply{Id = DetailId, Name="Vinga 400W", PowerSupplyType = PowerSupplyType.ATX, Wattage = 400 , DetailType=DetailType.PowerSupply},
-                new PowerSupply{Id = DetailId, Name="Inter-Tech 300W", PowerSupplyType = PowerSupplyType.TFX, Wattage = 300 , DetailType=DetailType.PowerSupply},
-*/
+                new Case{Id = DetailId, Name = "Zalman Z1", MotherboardTypeСompatibility="ATX",MaxPowerSupplySize= size , Type=DetailType.Case},
+                new Case{Id = DetailId, Name="Cooler Master", MotherboardTypeСompatibility="MiniATX",MaxPowerSupplySize=size , Type=DetailType.Case},
+                new Case{Id = DetailId, Name="AeroCool Aero-500", MotherboardTypeСompatibility="MicroATX",MaxPowerSupplySize=size ,  Type=DetailType.Case},
+                new Case{Id = DetailId, Name="Thermaltake Core V21", MotherboardTypeСompatibility="ATX",MaxPowerSupplySize=size, Type=DetailType.Case},
+                new Processor{Id = DetailId, Name="AMD Athlon II X2", SocketType="AM3", Wattage=65 ,Type =DetailType.Processor},
+                new Processor{Id = DetailId, Name="AMD Athlon II X3", SocketType="AM3", Wattage=95,Type =DetailType.Processor},
+                new Processor{Id = DetailId, Name="AMD Ryzen 7 3800X", SocketType="AM4", Wattage=105,Type =DetailType.Processor},
+                new Processor{Id = DetailId, Name="Intel Core i7-4770K", SocketType="LGA1150", Wattage=84,Type =DetailType.Processor},
+                new Motherboard{Id = DetailId, Name = "ASRock X570", MemoryCardTypeCompatibility = "DDR4", MotherboardType="ATX", SocketTypeCompatibility = "AM4" , Type=DetailType.Motherboard},
+                new Motherboard{Id = DetailId, Name = "Biostar MCP6P", MemoryCardTypeCompatibility = "DDR2", MotherboardType="MicroATX", SocketTypeCompatibility="AM3", Type=DetailType.Motherboard},
+                new Motherboard{Id = DetailId, Name = "MSI H81M-P33", MemoryCardTypeCompatibility = "DDR3", MotherboardType="MiniATX", SocketTypeCompatibility="LGA1150", Type=DetailType.Motherboard},
+                new Motherboard{Id = DetailId, Name = "Asus M4N68T", MemoryCardTypeCompatibility = "DDR4", MotherboardType="ATX", SocketTypeCompatibility="AM3", Type=DetailType.Motherboard},
+                new MemoryCard{Id = DetailId, Name = "AMD DDR2-800", MemoryCardType="DDR4",Wattage=1 ,Type=DetailType.MemoryCard},
+                new MemoryCard{Id = DetailId, Name = "Kingston DDR3-1333", MemoryCardType="DDR2",Wattage=2,Type=DetailType.MemoryCard},
+                new MemoryCard{Id = DetailId, Name = "Goodram DDR3-1333", MemoryCardType="DDR4",Wattage=1,Type=DetailType.MemoryCard},
+                new MemoryCard{Id = DetailId, Name = "HyperX DDR4-3200", MemoryCardType="DDR3",Wattage=2,Type=DetailType.MemoryCard},
+                new PowerSupply{Id = DetailId, Name="Modecom 400W",  Size = size, Power = 400 , Type=DetailType.PowerSupply},
+                new PowerSupply{Id = DetailId, Name="CHIEFTEC 650W",  Size = size, Power = 650 , Type=DetailType.PowerSupply},
+                new PowerSupply{Id = DetailId, Name="Vinga 400W",  Size = size, Power = 400 , Type=DetailType.PowerSupply},
+                new PowerSupply{Id = DetailId, Name="Inter-Tech 300W",  Size = size, Power = 300 , Type=DetailType.PowerSupply},
+
             };
         }
     }

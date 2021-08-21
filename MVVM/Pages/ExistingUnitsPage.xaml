@@ -6,10 +6,21 @@
       xmlns:local="clr-namespace:MVVM.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ExistingUnitsPage"
     >
 
     <Grid>
-        <Label Content="fsdfw" Background="Bisque" HorizontalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ItemsControl ItemsSource="{Binding Path=SystemUnits}" Height="482">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <GroupBox>
+                        <GroupBox.Header>{Binding Path=Name}</GroupBox.Header>
+                    </GroupBox>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Page>

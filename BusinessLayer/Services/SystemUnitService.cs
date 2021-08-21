@@ -23,9 +23,9 @@ namespace BusinessLayer.Services
             this.mapperFactory = new MapperFactory();
         }
 
-        public async Task<IList<SystemUnit>> GetSystemUnitsAsync()
+        public IList<SystemUnit> GetSystemUnits()
         {
-            IList<Entities.SystemUnit> systemUnits = await unitOfWork.SystemUnitRepository.GetAllFullSystemUnit();
+            IList<Entities.SystemUnit> systemUnits =  unitOfWork.SystemUnitRepository.GetAllFullSystemUnit();
             IList<SystemUnit> answer = new List<SystemUnit>();
 
             foreach (Entities.SystemUnit systemBlock in systemUnits)
@@ -37,9 +37,8 @@ namespace BusinessLayer.Services
 
                 foreach (Entities.SystemUnitDetail detail in systemBlock.SystemUnitDetails)
                 {
-                    var mapper = mapperFactory.SellectMapper<Detail>((DetailType)detail.Detail.TypeId);
-
-                    systemUnit.Details.Add(mapper.ToModel(detail.Detail));
+                    var mappper = mapperFactory.SelectMapper<Detail>((DetailType)detail.Detail.TypeId);
+                    systemUnit.Details.Add(mappper.ToModel(detail.Detail));
                 }
 
                 answer.Add(systemUnit);
@@ -50,8 +49,8 @@ namespace BusinessLayer.Services
 
         public void Save(SystemUnit SystemUnit)
         {
-            unitOfWork.SystemUnitRepository.AddAsync(mapper.ToEntity(SystemUnit));
-            unitOfWork.SaveChangesAsync();
+            unitOfWork.SystemUnitRepository.Add(mapper.ToEntity(SystemUnit));
+            unitOfWork.SaveChanges();
         }
 
        

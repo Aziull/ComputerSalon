@@ -13,11 +13,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"Id: {Id} | " +
-                                  $"Name: {Name} | " +
-                                  $"Price: {Price} | " +
-                                  $"Memory card type: {MemoryCardType} | " +
-                                  $"Wattage: {Wattage}";
+            return string.Format("Name: {0} | " + "Price: {1} | " + "Memory card type: {2} |  Wattage: {3}",Name,Price,MemoryCardType,Wattage);
         }
     }
 }

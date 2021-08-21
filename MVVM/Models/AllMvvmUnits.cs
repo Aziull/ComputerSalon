@@ -32,9 +32,9 @@ namespace MVVM.Models
             FillData();
         }
 
-        private async void FillData()
+        private  void FillData()
         {
-            AddItems(await systemUnitService.GetSystemUnitsAsync());
+            AddItems(systemUnitService.GetSystemUnits());
         }
         private void AddItems(IList<SystemUnit> systemUnits)
         {

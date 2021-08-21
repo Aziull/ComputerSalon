@@ -1,6 +1,7 @@
 ﻿
 
 using Models;
+using Models.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 using Types;
@@ -34,20 +35,61 @@ namespace UI
             return GetAllDetail().FindAll(detail => detail.Type == type).ToList();
         }
 
-        public bool IsPossibleToCreate(Case Case, Processor Processor, Motherboard Motherboard, MemoryCard MemoryCard, PowerSupply PowerSupply)
+        public bool IsPossibleToCreate(IList<Detail> details)
         {
-            /*double SystemWatage = PowerSupply.CalculateSystemWattage(Processor.Wattage, MemoryCard.Wattage);
-            bool IsCompatiblePowerSupply = PowerSupply.Power > SystemWatage;
+            var consumers = GetWattageConsumers(details);
 
-            bool IsCompatibleWithMB = Motherboard.CheckMemoryCardCompatibility(MemoryCard.MemoryCardType)
-                                      && Motherboard.CheckProcessorCompatibility(Processor.SocketType);
+            PowerSupply powerSupply = details
+                .Where(detail => detail.Type == DetailType.PowerSupply)
+                                .Select(detail => detail as PowerSupply)
+                                .FirstOrDefault();
 
-            bool IsCompatibleWithCase = Case.CheckMotherBoardСompatibility(Motherboard.MotherboardType) 
-                                        && Case.CheckPowerSupplyСompatibility(PowerSupply.PowerSupplyType);*/
+            Motherboard motherboard = details
+                .Where(detail => detail.Type == DetailType.Motherboard)
+                .Select(detail => detail as Motherboard)
+                .FirstOrDefault();
 
+            MemoryCard memoryCard = details
+                .Where(detail => detail.Type == DetailType.MemoryCard)
+                .Select(detail => detail as MemoryCard)
+                .FirstOrDefault();
 
+            Processor processor = details
+                .Where(detail => detail.Type == DetailType.Processor)
+                .Select(detail => detail as Processor)
+                .FirstOrDefault();
 
-            return false;
+            Case unitCase = details
+                .Where(detail => detail.Type == DetailType.Case)
+                .Select(detail => detail as Case)
+                .FirstOrDefault();
+
+            
+
+            bool isCompatibleMb = motherboard.CheckMemoryCardCompatibility(memoryCard) &&
+                motherboard.CheckProcessorCompatibility(processor);
+
+            bool IsCompatibleWithCase = unitCase.CheckMotherBoardСompatibility(motherboard) 
+                                        && unitCase.CheckPowerSupplyСompatibility(powerSupply);
+
+            bool IsCompatiblePowerSupply = powerSupply.IsEnoughPower(consumers);
+
+            return IsCompatiblePowerSupply && isCompatibleMb && IsCompatibleWithCase;
+        }
+        private IList<IWattageConsumer> GetWattageConsumers(IList<Detail> details)
+        {
+            IList<IWattageConsumer> consumers = new List<IWattageConsumer>();
+
+            foreach (var detail in details)
+            {
+
+                    if (detail is IWattageConsumer)
+                    {
+                        consumers.Add((IWattageConsumer)detail);
+                    }
+                
+            }
+            return consumers;
         }
     }
 }

@@ -10,14 +10,14 @@ namespace Models
 {
     public class Detail : INotifyPropertyChanged
     {
-        private bool isSellected;
-        public bool IsSellected
+        private bool isSelected;
+        public bool IsSelected
         { 
-            get => isSellected;
+            get => isSelected;
             set
             {
-                isSellected = value;
-                OnPropertyChanged(nameof(IsSellected));
+                isSelected = value;
+                OnPropertyChanged(nameof(IsSelected));
             }
         }
 

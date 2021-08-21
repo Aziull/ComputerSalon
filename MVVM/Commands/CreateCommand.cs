@@ -12,7 +12,7 @@ namespace MVVM.Commands
 {
     public class CreateCommand : ICommand
     {
-        private ISystemUnitHandler systemUnitHandler;
+        private ISingleUnitService systemUnitHandler;
         private UnitMvvmDetails details;
         private SystemUnit systemUnit;
         private ISystemUnitService systemUnitService;
@@ -24,7 +24,7 @@ namespace MVVM.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public CreateCommand(ISystemUnitHandler systemUnitHandler, UnitMvvmDetails details, SystemUnit systemUnit, ISystemUnitService systemUnitService)
+        public CreateCommand(ISingleUnitService systemUnitHandler, UnitMvvmDetails details, SystemUnit systemUnit, ISystemUnitService systemUnitService)
         {
             this.systemUnitHandler = systemUnitHandler;
             this.details = details;
@@ -41,7 +41,7 @@ namespace MVVM.Commands
         {
             IList<Detail> sellectedDetails = details.Details.Values
                 .SelectMany(item => item.ToList())
-                .Where(item => item.IsSellected)
+                .Where(item => item.IsSelected)
                 .ToList();
 
             foreach (var detail in sellectedDetails)

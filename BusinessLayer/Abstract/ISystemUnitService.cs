@@ -8,7 +8,7 @@ namespace BusinessLayer.Abstract
 {
     public interface ISystemUnitService
     {
-        Task<IList<SystemUnit>> GetSystemUnitsAsync();
+        IList<SystemUnit> GetSystemUnits();
 
         void Save(SystemUnit SystemUnit);
     }

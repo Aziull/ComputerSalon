@@ -64,6 +64,7 @@ namespace UI
             Motherboard Motherboard;
             MemoryCard MemoryCard;
             PowerSupply PowerSupply;
+            IList<Detail> details = new List<Detail>();
             while (true)
             {
                 Console.WriteLine("Enter Case Id:");
@@ -71,6 +72,7 @@ namespace UI
                 if (Controller.GetById(CaseId).Type == DetailType.Case)
                 {
                     Case = (Case)Controller.GetById(CaseId);
+                    details.Add(Case);
                     Console.WriteLine(Case);
                     break;
                 }
@@ -87,6 +89,7 @@ namespace UI
                 if (Controller.GetById(ProcessorId).Type == DetailType.Processor)
                 {
                     Processor = (Processor)Controller.GetById(ProcessorId);
+                    details.Add(Processor);
                     Console.WriteLine(Processor);
                     break;
                 }
@@ -101,6 +104,7 @@ namespace UI
                 if (Controller.GetById(MotherboardId).Type == DetailType.Motherboard)
                 {
                     Motherboard = (Motherboard)Controller.GetById(MotherboardId);
+                    details.Add(Motherboard);
                     Console.WriteLine(Motherboard);
                     break;
                 }
@@ -115,6 +119,7 @@ namespace UI
                 if (Controller.GetById(MemoryCardId).Type == DetailType.MemoryCard)
                 {
                     MemoryCard = (MemoryCard)Controller.GetById(MemoryCardId);
+                    details.Add(MemoryCard);
                     Console.WriteLine(MemoryCard);
                     break;
                 }
@@ -130,6 +135,7 @@ namespace UI
                 if (Controller.GetById(PowerSupplyId).Type == DetailType.PowerSupply)
                 {
                     PowerSupply = (PowerSupply)Controller.GetById(PowerSupplyId);
+                    details.Add(PowerSupply);
                     Console.WriteLine(PowerSupply);
                     break;
                 }
@@ -138,7 +144,7 @@ namespace UI
             }
 
 
-            if (Controller.IsPossibleToCreate(Case,Processor,Motherboard,MemoryCard, PowerSupply))
+            if (Controller.IsPossibleToCreate(details))
             {
                 Console.WriteLine("Your PC is possible to create!!!");
             }

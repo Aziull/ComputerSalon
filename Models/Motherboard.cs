@@ -24,12 +24,8 @@ namespace Models
 
         public override string ToString()
         {
-            return $"Id: {Id} | " +
-                                  $"Name: {Name} | " +
-                                  $"Price: {Price} " +
-                                  $"| Memory card type: {MotherboardType} | \n" +
-                                  $"Memory card compatibility: {MemoryCardTypeCompatibility} | " +
-                                  $"Socket compatibility: {SocketTypeCompatibility}";
+            return string.Format("Name: {0} | Price: {1} | Motherboard type: {2} | Memory card compatibility: {3} | Socket compatibility: {4}",
+                Name,Price,MotherboardType,MemoryCardTypeCompatibility,SocketTypeCompatibility);
         }
     }
 }

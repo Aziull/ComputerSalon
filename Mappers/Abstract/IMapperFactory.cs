@@ -5,6 +5,6 @@ namespace Mappers.Abstract
 {
     public interface IMapperFactory
     {
-        IModelMapper<T> SellectMapper<T>(DetailType type) where T : Detail;
+        IModelMapper<T> SelectMapper<T>(DetailType type) where T : class;
     }
 }

@@ -10,14 +10,16 @@ namespace BusinessLayer.Validators
 {
     public class SizeValidator : IValidator
     {
-        public bool Validate(ISystemUnitHandler systemUnitHandler)
+        public IValidator Next { get ; set ; }
+
+        public bool Validate(ISingleUnitService systemUnit)
         {
-            var powerSupply = (PowerSupply)systemUnitHandler.GetDetailByType(DetailType.PowerSupply).Select(detail => detail as Detail).FirstOrDefault();
-            var unitCase = (Case)systemUnitHandler.GetDetailByType(DetailType.Case).Select(detail => detail as Detail).FirstOrDefault();
+            var powerSupply = (PowerSupply)systemUnit.GetDetailByType(DetailType.PowerSupply).FirstOrDefault();
+            var unitCase = (Case)systemUnit.GetDetailByType(DetailType.Case).FirstOrDefault();
 
             if (!unitCase.CheckPowerSupplyСompatibility(powerSupply)) 
                 return false;
-            return true;
+            return Next == null ? true : Next.Validate(systemUnit);
         }
     }
 }

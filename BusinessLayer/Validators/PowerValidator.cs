@@ -10,15 +10,16 @@ namespace BusinessLayer.Validators
 {
     public class PowerValidator : IValidator
     {
+        public IValidator Next { get; set; }
 
-        public bool Validate(ISystemUnitHandler systemUnitHandler)
+        public bool Validate(ISingleUnitService systemUnit)
         { 
-            var powerSupply = (PowerSupply)systemUnitHandler.GetDetailByType(DetailType.PowerSupply).Select(detail => detail as Detail).FirstOrDefault() ;
-            var consumers = systemUnitHandler.GetWattageConsumers();
+            var powerSupply = (PowerSupply)systemUnit.GetDetailByType(DetailType.PowerSupply).FirstOrDefault() ;
+            var consumers = systemUnit.GetWattageConsumers();
 
             if (!powerSupply.IsEnoughPower(consumers))
                 return false;
-            return true;
+            return Next == null ? true : Next.Validate(systemUnit);
         }
     }
 }

@@ -8,20 +8,22 @@ using Types;
 
 namespace BusinessLayer.Validators
 {
-    public class FormFactorValidator
+    public class FormFactorValidator : IValidator
     {
-        public bool Validate(ISystemUnitHandler systemUnitHandler)
+        public IValidator Next { get; set ; }
+
+        public bool Validate(ISingleUnitService systemUnit)
         {
-            var motherboard = (Motherboard)systemUnitHandler.GetDetailByType(DetailType.Motherboard).Select(detail => detail as Detail).FirstOrDefault();
-            var unitCase = (Case)systemUnitHandler.GetDetailByType(DetailType.Case).Select(detail => detail as Detail).FirstOrDefault();
-            var processor = (Processor)systemUnitHandler.GetDetailByType(DetailType.Processor).Select(detail => detail as Detail).FirstOrDefault();
-            var memmoryCard = (MemoryCard)systemUnitHandler.GetDetailByType(DetailType.MemoryCard).Select(detail => detail as Detail).FirstOrDefault();
+            var motherboard = (Motherboard)systemUnit.GetDetailByType(DetailType.Motherboard).FirstOrDefault();
+            var unitCase = (Case)systemUnit.GetDetailByType(DetailType.Case).FirstOrDefault();
+            var processor = (Processor)systemUnit.GetDetailByType(DetailType.Processor).FirstOrDefault();
+            var memmoryCard = (MemoryCard)systemUnit.GetDetailByType(DetailType.MemoryCard).FirstOrDefault();
 
             if (!unitCase.CheckMotherBoardСompatibility(motherboard) 
                 && !motherboard.CheckMemoryCardCompatibility(memmoryCard) 
                 && !motherboard.CheckProcessorCompatibility(processor))
                 return false;
-            return true;
+            return Next == null ? true : Next.Validate(systemUnit) ;
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace MVVM.ViewModels
 {
-    public class ConfigViewModel : ViewModelBase
+    public class ConfigPageViewModel : ViewModelBase
     {
         private ICommand createCommand;
         private SystemUnit systemUnit;
@@ -30,7 +30,7 @@ namespace MVVM.ViewModels
             }
         }
 
-        public ConfigViewModel(UnitMvvmDetails unitMvvmDetails, ISystemUnitHandler systemUnitHandler, ISystemUnitService systemUnitServcie) : base("Config")
+        public ConfigPageViewModel(UnitMvvmDetails unitMvvmDetails, ISingleUnitService systemUnitHandler, ISystemUnitService systemUnitServcie) : base("Config")
         {
             
             Details = unitMvvmDetails;
